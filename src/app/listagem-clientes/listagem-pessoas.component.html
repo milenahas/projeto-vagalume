@@ -1,0 +1,74 @@
+<!-- <label>Selecionar clientes do dia 01 ao dia 08/08/2022</label> -->
+<div  class="container">
+    <h4>Clique para listar os usuários logados no período de 01/08/2022 à 08/08/2022</h4>
+    <button *ngIf="!loading" class="botao" (click)="selecionarPessoas()">Selecionar usuários</button>
+    <p *ngIf="loading">Carregando</p>
+
+    <ng-container *ngIf="pessoasSelecionadas.length > 0">
+        
+        <div class="card">
+            <div>
+                <p>Quantidade de usuários conectados no período selecionado:</p>
+                <b>{{pessoasSelecionadas.length}}</b>
+
+                <div class="card">
+                    <p>Listagem de pessoas conectados no período: </p>
+    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Cliente</th>
+                                <th>Última conexão</th>
+                                <th>ID Usuário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let col of pessoasSelecionadas">
+                                <td>{{col.client_id}}</td>
+                                <td>{{col.last_connection}}</td>
+                                <td>{{col.user_id}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr style="margin: 20px 0px 20px 0px">
+            </div>
+
+
+            <div id="cards">
+              <div class="card">
+                <h1>Pessoas Totais</h1>
+                    <p> {{usuariosTotal.total}}</p>
+              </div>
+
+              <div class="card">
+                <h1>Pessoas Online</h1>
+                    <p> {{usuariosTotal.online}}</p>
+              </div>
+
+              <!-- Comentado pois a rota não envia esse atributo -->
+              <!-- <div class="card">
+                <h1>Pessoas Offline<h1>
+                    <p> {{data.offline}}</p>
+              </div> -->
+              
+              <div class="card">
+                <h1>Pessoas conectadas no período</h1>
+                    <p> {{pessoasSelecionadas.length}}</p>
+              </div>
+            </div>
+            
+
+        </div>
+
+        
+
+
+    </ng-container>
+
+    
+  </div>
+  
+
+
